@@ -36,7 +36,7 @@ public class EnemySpawner : MonoBehaviour
     {
         // Genera una posición aleatoria en el círculo alrededor del mapa
         Vector2 randomPosition = Random.insideUnitCircle.normalized * spawnRadius;
-        Vector3 spawnPosition = new Vector3(randomPosition.x, 0, randomPosition.y);
+        Vector3 spawnPosition = new Vector3(randomPosition.x,  randomPosition.y, 0);
 
         // Instancia el enemigo y configura su objetivo
         GameObject enemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);

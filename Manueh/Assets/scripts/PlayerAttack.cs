@@ -5,53 +5,41 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     [Header("Ajustes de Ataque")]
-    public float attackRange = 2f; // Rango del ataque
+    public GameObject attackPrefab; // Prefab del ataque
+    public Transform attackSpawnPoint; // Punto de aparición del ataque
+    public float attackSpeed = 5f; // Velocidad del ataque
     public int attackDamage = 10; // Daño del ataque
     public LayerMask enemyLayer; // Capa de los enemigos
 
     [Header("Cooldown del Ataque")]
-    public float attackCooldown = 1f; // Tiempo entre ataques
-    private bool canAttack = true;
+    public float attackInterval = 2f; // Tiempo entre ataques
+    private float timeSinceLastAttack = 0f;
 
     // Update se llama una vez por frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && canAttack)
+        timeSinceLastAttack += Time.deltaTime;
+
+        if (timeSinceLastAttack >= attackInterval)
         {
-            Attack();
+            PerformAttack();
+            timeSinceLastAttack = 0f;
         }
     }
 
-    void Attack()
+    void PerformAttack()
     {
-        // Iniciar el ataque
-        Debug.Log("Atacando!");
-        canAttack = false;
+        // Crear el objeto de ataque
+        GameObject attackObject = Instantiate(attackPrefab, attackSpawnPoint.position, Quaternion.identity);
 
-        // Detectar enemigos dentro del rango
-        Collider[] hitEnemies = Physics.OverlapSphere(transform.position, attackRange, enemyLayer);
-
-        // Aplicar daño a cada enemigo detectado
-        foreach (Collider enemy in hitEnemies)
+        // Configurar los parámetros del ataque
+        Attack attack = attackObject.GetComponent<Attack>();
+        if (attack != null)
         {
-            Debug.Log("Golpeó a " + enemy.name);
-            enemy.GetComponent<EnemyHealth>()?.TakeDamage(attackDamage);
+            attack.Initialize(attackSpeed, attackDamage, enemyLayer);
         }
 
-        // Iniciar cooldown
-        StartCoroutine(ResetAttackCooldown());
-    }
-
-    IEnumerator ResetAttackCooldown()
-    {
-        yield return new WaitForSeconds(attackCooldown);
-        canAttack = true;
-    }
-
-    // Dibujar el rango de ataque en la vista del editor
-    private void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        // Destruir el objeto de ataque después de 5 segundos
+        Destroy(attackObject, 5f);
     }
 }

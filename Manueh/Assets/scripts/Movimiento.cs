@@ -1,27 +1,21 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class Movimiento : MonoBehaviour
+public class PlayerMovement : MonoBehaviour
 {
-    public float speed = 5;
+    public float speed = 5f; // Velocidad de movimiento del jugador
 
-    Rigidbody2D rb2d;
-    void Start()
+    private void Update()
     {
-        rb2d = GetComponent<Rigidbody2D>();
-    }
+        // Captura la entrada del teclado
+        float horizontal = Input.GetAxis("Horizontal"); 
+        float vertical = Input.GetAxis("Vertical");  
+        // Calcula la dirección de movimiento
+        Vector3 direction = new Vector3(horizontal, vertical, 0f).normalized;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    private void FixedUpdate()
-    {
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        Vector3 direccion = new Vector3(horizontal, vertical);
-        transform.position += direccion * speed * Time.deltaTime;
+        // Si hay movimiento, aplica la traslación
+        if (direction.magnitude >= 0.1f)
+        {
+            transform.Translate(direction * speed * Time.deltaTime, Space.World);
+        }
     }
 }

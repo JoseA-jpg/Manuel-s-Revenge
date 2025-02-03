@@ -148,7 +148,7 @@ MonoBehaviour:
   attackPrefab: {fileID: 942526527}
   attackSpawnPoint: {fileID: 1511973026}
   attackSpeed: 5
-  attackDamage: 10
+  attackDamage: 100
   enemyLayer:
     serializedVersion: 2
     m_Bits: 64
@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 519420029}
   - component: {fileID: 519420033}
   m_Layer: 0
-  m_Name: Main Camera
+  m_Name: Camara
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -279,6 +279,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  damage: 100
 --- !u!1 &942526527 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2802288234972917154, guid: 089dda26127ff32408d61ad0863ee4d9, type: 3}
@@ -17501,6 +17502,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: manueh
       objectReference: {fileID: 0}
+    - target: {fileID: 8001066690630914691, guid: 5ee244af8e515cb4fa2ad82e435762ab, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 1636070336503297383, guid: 5ee244af8e515cb4fa2ad82e435762ab, type: 3}
     m_RemovedGameObjects: []
@@ -17524,6 +17529,10 @@ PrefabInstance:
     - target: {fileID: 2802288234972917154, guid: 089dda26127ff32408d61ad0863ee4d9, type: 3}
       propertyPath: m_Name
       value: AttackPrefab
+      objectReference: {fileID: 0}
+    - target: {fileID: 2802288234972917154, guid: 089dda26127ff32408d61ad0863ee4d9, type: 3}
+      propertyPath: m_TagString
+      value: Atack
       objectReference: {fileID: 0}
     - target: {fileID: 6515085653138058199, guid: 089dda26127ff32408d61ad0863ee4d9, type: 3}
       propertyPath: m_RootOrder
@@ -17586,6 +17595,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3919514263310079342, guid: 85569bc9cf071f24d9b1d23f7046df78, type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4489173468867039071, guid: 85569bc9cf071f24d9b1d23f7046df78, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -17637,6 +17650,10 @@ PrefabInstance:
     - target: {fileID: 6552913883591398799, guid: 85569bc9cf071f24d9b1d23f7046df78, type: 3}
       propertyPath: m_Name
       value: Triangle
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552913883591398799, guid: 85569bc9cf071f24d9b1d23f7046df78, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 6882356133537024650, guid: 85569bc9cf071f24d9b1d23f7046df78, type: 3}
       propertyPath: player

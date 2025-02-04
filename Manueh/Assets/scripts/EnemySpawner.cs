@@ -5,8 +5,8 @@ public class EnemySpawner : MonoBehaviour
     public GameObject enemyPrefab; // Prefab del enemigo a spawnear
     public Transform player; // Referencia al jugador para que los enemigos puedan seguirlo
     public float spawnRadius = 20f; // Radio en el que aparecerán los enemigos fuera del mapa
-    public float initialSpawnInterval = 120f; // Intervalo inicial entre apariciones (en frames)
-    public float accelerationRate = 0.98f; // Tasa de aceleración (reduce el tiempo de spawn)
+    public float initialSpawnInterval = 150f; // Intervalo inicial entre apariciones (en frames)
+    public float accelerationRate = 0.40f; // Tasa de aceleración (reduce el tiempo de spawn)
     private float currentSpawnInterval; // Intervalo actual entre spawns
 
     private int frameCounter = 0; // Contador de frames
@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
 
             // Reduce el intervalo de spawn para acelerar la generación de enemigos
             currentSpawnInterval *= accelerationRate;
-            currentSpawnInterval = Mathf.Max(10f, currentSpawnInterval); // Limita el mínimo intervalo
+            currentSpawnInterval = Mathf.Max(30f, currentSpawnInterval); // Limita el mínimo intervalo
         }
     }
 

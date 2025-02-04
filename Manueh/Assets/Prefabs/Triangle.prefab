@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: 6882356133537024650}
   - component: {fileID: 3919514263310079342}
   - component: {fileID: 6117527990875597863}
+  - component: {fileID: -6409327512356181553}
   m_Layer: 6
   m_Name: Triangle
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -99,7 +100,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 98a84347a3b5f1147a537487994f7624, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 0}
+  player: {fileID: 6634179799067709049, guid: 7e4dffa548f8a0a44ad7194a27d35128, type: 3}
   speed: 3
 --- !u!61 &3919514263310079342
 BoxCollider2D:
@@ -173,3 +174,17 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &-6409327512356181553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6552913883591398799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d78857a5f2308fc44988c7516f484fbb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 100
+  damage: 0
